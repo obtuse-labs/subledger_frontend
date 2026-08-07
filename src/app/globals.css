@@ -13,6 +13,7 @@ html {
 :root {
 	--accent: #e8551a;
 	--accent-hover: #c9430a;
+	--accent-muted: #a0a4ad;
 }
 
 [data-theme="light"] {
@@ -51,6 +52,7 @@ html {
 	--color-band-bg: var(--band-bg);
 	--color-accent: var(--accent);
 	--color-accent-hover: var(--accent-hover);
+	--color-accent-muted: var(--accent-muted);
 	--font-sans: var(--font-inter);
 	--font-mono: var(--font-jetbrains);
 }

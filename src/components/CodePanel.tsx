@@ -20,7 +20,7 @@ export default function CodePanel({title, body}: {title: string, body: string}) 
                     <span className="w-[7px] h-[7px] rounded-full bg-[#454955] opacity-[1]"></span>
                     <span className="w-[7px] h-[7px] rounded-full bg-[#454955] opacity-[0.7]"></span>
                     <span className="w-[7px] h-[7px] rounded-full bg-[#454955] opacity-[0.45]"></span>
-                    <span className="ml-2 text-[#8a8f9c] font-mono text-xs">{title}</span>
+                    <span className="ml-2 text-[#8a8f9c] font-mono text-[13px]">{title}</span>
                 </div>
                 <button 
                     className="px-3 py-1.5 rounded border border-[#3a3d47] text-[#dfe1e6] hover:bg-[#1e2129] text-[11px]"
@@ -30,7 +30,7 @@ export default function CodePanel({title, body}: {title: string, body: string}) 
                 </button>
             </div>
             <div className="px-[18px] py-[16px]">
-                <pre className="text-[#dfe1e6] font-mono whitespace-pre leading-[1.65] overflow-x-auto text-xs">{body}</pre>
+                <pre className="text-[#dfe1e6] font-mono whitespace-pre leading-[1.65] overflow-x-auto text-[13px] m-0">{body}</pre>
             </div>
         </div>
     );
