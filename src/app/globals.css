@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+}
+html {
+	scroll-behavior: smooth;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--accent: #e8551a;
+	--accent-hover: #c9430a;
+}
+
+[data-theme="light"] {
+	--bg: #fafaf8;
+	--bg-alt: #f2f1ee;
+	--fg: #14161c;
+	--muted: #5b5f6b;
+	--muted2: #a3a29a;
+	--border: #e3e2dd;
+	--callout-bg: #fff1e6;
+	--callout-border: #ffd3ab;
+	--band-bg: #14161c;
+}
+
+[data-theme="dark"] {
+	--bg: #0e0f13;
+	--bg-alt: #17181f;
+	--fg: #f3f2ee;
+	--muted: #a0a4ad;
+	--muted2: #6b6f78;
+	--border: #2b2d36;
+	--callout-bg: #2b1c10;
+	--callout-border: #4a3018;
+	--band-bg: #1c1f2b;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--color-bg: var(--bg);
+	--color-bg-alt: var(--bg-alt);
+	--color-fg: var(--fg);
+	--color-muted: var(--muted);
+	--color-muted2: var(--muted2);
+	--color-border: var(--border);
+	--color-callout-bg: var(--callout-bg);
+	--color-callout-border: var(--callout-border);
+	--color-band-bg: var(--band-bg);
+	--color-accent: var(--accent);
+	--color-accent-hover: var(--accent-hover);
+	--font-sans: var(--font-inter);
+	--font-mono: var(--font-jetbrains);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
