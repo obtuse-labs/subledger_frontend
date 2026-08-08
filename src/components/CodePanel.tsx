@@ -14,7 +14,7 @@ export default function CodePanel({title, body}: {title: string, body: string}) 
     }
 
     return (
-        <div className="bg-[#14161c] border border-[#2b2e37] rounded-[10px] overflow-hidden font-mono">
+        <div className="bg-[#14161c] border border-[#2b2e37] w-full min-w-0 rounded-[10px] overflow-hidden font-mono">
             <div className="flex items-center justify-between px-[14px] py-[10px] border-b border-[#2b2e37]">
                 <div className="flex items-center gap-2">
                     <span className="w-[7px] h-[7px] rounded-full bg-[#454955] opacity-[1]"></span>
@@ -30,7 +30,7 @@ export default function CodePanel({title, body}: {title: string, body: string}) 
                 </button>
             </div>
             <div className="px-[18px] py-[16px]">
-                <pre className="text-[#dfe1e6] font-mono whitespace-pre leading-[1.65] overflow-x-auto text-[13px] m-0">{body}</pre>
+                <pre className="text-[#dfe1e6] max-w-full min-w-0 font-mono whitespace-pre leading-[1.65] overflow-x-auto text-[13px] m-0">{body}</pre>
             </div>
         </div>
     );

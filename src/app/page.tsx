@@ -1,11 +1,12 @@
 import CodePanel from "@/components/CodePanel";
 import { HERO_BODY, STACK, PRIMITIVES, LEDGER_BODY, QUICKSTART_BODY } from "@/lib/api-data";
 import Link from "next/link";
+import { github } from "@/lib/api-data";
 
 export default function Home() {
 	return (
 		<>
-			<section className="max-w-[1200px] mx-auto px-[clamp(20px,5vw,64px)] pt-[clamp(48px,10vw,96px)] pb-[64px]">
+			<section className="w-full max-w-[1200px] mx-auto px-[clamp(20px,5vw,64px)] pt-[clamp(48px,10vw,96px)] pb-[64px]">
 				<div className="grid gap-12 items-center grid-cols-[repeat(auto-fit,minmax(360px,1fr))]">
 					{/* left section */}
 					<div>
@@ -16,7 +17,7 @@ export default function Home() {
 						</p>
 						<div className="flex gap-3 flex-wrap mb-9">
 							<a 
-								href="https://github.com/utkarsh-vats/subledger_backend"
+								href={github}
 								target="_blank"
 								rel="noopener"
 								className="bg-fg text-bg text-sm font-semibold px-5 py-3 rounded-lg"
@@ -88,7 +89,7 @@ export default function Home() {
 					/>
 				</div>
 			</section>
-			<section className="max-w-[900px] mx-auto pt-6 px-[clamp(20px,5vw,64px)] pb-20">
+			<section className="w-full max-w-[900px] min-w-0 mx-auto pt-6 px-[clamp(20px,5vw,64px)] pb-20">
 				<div className="font-mono text-[13px] font-semibold text-accent tracking-[0.08em] uppercase mb-3.5">/ getting started</div>
 				<h2 className="text-[clamp(26px,4.5vw,38px)] font-extrabold tracking-[-0.01em] mb-7 text-fg">Run it yourself.</h2>
 				<CodePanel 
@@ -96,11 +97,11 @@ export default function Home() {
 					body={QUICKSTART_BODY}
 				/>
 			</section>
-			<section className="bg-bg-alt py-[72px] px-[clamp(20px,5vw,64px)] text-center">
+			<section className="w-full bg-bg-alt py-[72px] px-[clamp(20px,5vw,64px)] text-center">
 				<h2 className="text-[clamp(26px,4.5vw,36px)] font-extrabold tracking-[-0.01em] mb-3.5 text-fg">Read the <span className="text-accent">code</span>, not the <span className="text-accent-muted">deck</span>.</h2>
 				<p className="text-muted text-[15px] mb-7">Early access — built in public. No signup, no waitlist. Clone it and run it.</p>
 				<a 
-					href="https://github.com/utkarsh-vats/subledger_backend"
+					href={github}
 					target="_blank"
 					rel="noopener"
 					className="bg-fg text-bg text-sm font-semibold px-[22px] py-3 rounded-[8px] inline-block"

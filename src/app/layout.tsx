@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -50,7 +52,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 			</head>
 			<body className="min-h-full flex flex-col bg-bg text-fg font-sans">
 				<ThemeProvider>
+					<Navbar />
 					{children}
+					<Footer />
 				</ThemeProvider>
 			</body>
 		</html>

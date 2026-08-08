@@ -35,6 +35,8 @@ docker compose --env-file .env.local up -d\t\t# api · postgres 18 · redis · c
 docker compose exec web alembic upgrade head
 # open http://localhost:8001/docs\t\t\t\t# interactive OpenAPI schema`;
 
+export const github = "https://github.com/utkarsh-vats/subledger_backend";
+
 const QUICKSTART_BODY_ALT = 'git clone https://github.com/utkarsh-vats/subledger_backend.git && cd subledger_backend\ncp .env.example .env.local\ndocker compose --env-file .env.local up -d      # api · postgres 18 · redis · celery\ndocker compose exec web alembic upgrade head\n# open http://localhost:8001/docs                # interactive OpenAPI schema';
 
 const LEDGER_BODY_ALT = 'GET /api/v1/ledger?invoice_id=inv_9f3a2c81\n\n[\n  { "entry_type": "invoice_created", "amount": "499.00", "currency": "INR" },\n  { "entry_type": "payment_success", "amount": "499.00", "currency": "INR" },\n  { "entry_type": "payment_failure", "amount": "499.00", "currency": "INR" }\n]';

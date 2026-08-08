@@ -1,15 +1,5 @@
 @import "tailwindcss";
 
-* {
-	box-sizing: border-box;
-}
-body {
-	margin: 0;
-}
-html {
-	scroll-behavior: smooth;
-}
-
 :root {
 	--accent: #e8551a;
 	--accent-hover: #c9430a;
@@ -56,4 +46,15 @@ html {
 	--font-sans: var(--font-inter);
 	--font-mono: var(--font-jetbrains);
 }
+
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+}
+html {
+	scroll-behavior: smooth;
+}
+
 
