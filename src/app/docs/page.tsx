@@ -24,7 +24,7 @@ export default function Docs() {
                     </span> header (a UUID).
                 </div>
             </div>
-            <div className="sticky top-[70px] z-15 bg-bg border-b border-border mx-[-20px] mb-10 py-2.5 px-5 flex gap-2 overflow-x-auto whitespace-nowrap">
+            <div className="sticky top-[60px] md:top-[70px] z-15 bg-bg border-b border-border mx-[-20px] mb-10 py-2.5 px-5 flex gap-2 overflow-x-auto whitespace-nowrap">
                 {RESOURCES_BASE.map((res) => (
                     <a
                         href={`#${res.id}`} key={res.id}
