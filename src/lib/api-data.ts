@@ -131,3 +131,27 @@ export const RESOURCES_BASE = [
         ]
     },
 ];
+
+
+// ****************************************
+
+export function badge(method:string) {
+    switch (method) {
+        case "POST":
+            return {
+                bg: "#ffe6d5",
+                fg: "#c9430a",
+            }
+        case "PATCH":
+            return {
+                bg: "#eaf3ff",
+                fg: "#1c5fa8",
+            }
+        case "GET":
+        default:
+            return {
+                bg:"#e4f5ea",
+                fg:"#1f7a4d",
+            }
+    }
+}
