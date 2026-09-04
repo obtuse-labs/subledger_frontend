@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 				/>
 			</head>
 			<body className="min-h-full flex flex-col bg-bg text-fg font-sans">
+				<Analytics />
 				<ThemeProvider>
 					<Navbar />
 					{children}

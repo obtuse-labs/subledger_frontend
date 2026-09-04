@@ -6,7 +6,7 @@ import { github } from "@/lib/api-data";
 export default function Home() {
 	return (
 		<>
-			<section className="w-full max-w-[1200px] mx-auto px-[clamp(20px,5vw,64px)] pt-[clamp(48px,10vw,96px)] pb-[64px]">
+			<section className="w-full max-w-[1200px] mx-auto px-[clamp(20px,5vw,64px)] pt-[clamp(40px,8vw,72px)] pb-[64px]">
 				<div className="grid gap-12 items-center grid-cols-[repeat(auto-fit,minmax(360px,1fr))]">
 					{/* left section */}
 					<div>

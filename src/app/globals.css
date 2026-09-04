@@ -55,9 +55,18 @@ body {
 }
 html {
 	scroll-behavior: smooth;
+	data-scroll-behavior: smooth;
 }
 button {
 	cursor: pointer;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+	-webkit-box-shadow: 0 0 0 1000px var(--bg) inset;
+	-webkit-text-fill-color: var(--fg);
+	transition: background-color 9999s ease-in-out 0s;
 }
 
 

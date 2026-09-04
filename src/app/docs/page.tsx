@@ -3,7 +3,6 @@ import { LIVE_API, RESOURCES_BASE, badge } from "@/lib/api-data";
 
 export default function Docs() {
     return (
-
         <main className="px-[clamp(20px,5vw,64px)] py-[clamp(40px,8vw,72px)] max-w-[1000px] mx-auto w-full">
             <div className="font-mono text-[13px] font-semibold tracking-[0.08em] uppercase text-accent mb-3.5">/ api reference</div>
             <h1 className="text-[clamp(30px,5vw,46px)] font-extrabold tracking-[-0.02em] mb-3.5 text-fg">Endpoints</h1>

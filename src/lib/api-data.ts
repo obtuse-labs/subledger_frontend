@@ -1,4 +1,5 @@
-export const LIVE_API = "https://obtuse-labs-home.thresher-pirate.ts.net"
+// export const LIVE_API = "https://obtuse-labs-home.thresher-pirate.ts.net";
+export const LIVE_API = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const HERO_BODY = `POST /api/v1/payments/record
 Authorization: Bearer <jwt>
@@ -10,7 +11,7 @@ Idempotency-Key: 8f14e45f-ceea-4b2a-9c1e-2b6a1d9f7a02
 	"currency": "INR",
 	"status": "success",
 	"provider_reference": "razorpay_pay_Nk3xQ2"
-}`
+}`;
 
 export const STACK = ['FastAPI','Python 3.14','SQLAlchemy 2.x','PostgreSQL 18','Redis','Celery + Beat','Pydantic v2','Docker Compose'];
 
