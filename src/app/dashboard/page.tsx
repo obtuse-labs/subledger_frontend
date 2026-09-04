@@ -1,21 +1,24 @@
-import { cookies } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+import { accountRequest } from "@/lib/api";
+import { Project } from "@/lib/types";
+import Link from "next/link";
 
-export default async function Dashboard(request: NextRequest) {
-    const cookieStore = await cookies();
-    const token = cookieStore.get('auth-token')?.value;
-    if (!token) {
-        return NextResponse.redirect(new URL('/login', request.url));
-    }
-    const response = await fetch(`${process.env.API_BASE_URL}/api/v1/auth/me`, {
-        headers: {
-            "Authorization": `Bearer ${token}`,
-        },
+export default async function Dashboard() {
+    const projects: Project[] = await accountRequest("/projects", {
+        method: "GET",
     });
     
     return (
         <main className="w-full max-w-[1200px] mx-auto flex-1 flex items-center justify-center px-[clamp(20px,5vw,64px)] py-[clamp(20px,4vw,40px)]">
-            Dashboard
+            {projects.length === 0 && (
+                <div className="text-muted text-center">
+                    No projects found.
+                </div>
+            )}
+            {projects?.map((project: Project) => (
+                <Link key={project.id} href={`/dashboard/${project.id}/plans`}>
+                    {project.id}: {project.name}
+                </Link>
+            ))}
         </main>
     )
 }
