@@ -36,7 +36,7 @@ export default function PlanForm({ projectId, onClose, plan }: { projectId: stri
         };
     }, [onClose]);
     return (
-        <div className="fixed inset-0 z-50 flex justify-end">
+        <div className="fixed inset-0 z-50 flex justify-end text-left">
             <div onClick={onClose} className="absolute inset-0 bg-disabled/50"></div>
             <form 
                 action={formAction}
