@@ -1,3 +1,6 @@
+import { AccountGroupProps } from "./types";
+import { ChartBarBig, FolderKanban, KeyRound, UsersRound, Wallet, Settings } from "lucide-react";
+
 // export const LIVE_API = "https://obtuse-labs-home.thresher-pirate.ts.net";
 export const LIVE_API = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -156,3 +159,27 @@ export function badge(method:string) {
             }
     }
 }
+
+export const accountGroups: AccountGroupProps[] = [
+        { 
+            title: "Account",
+            items: [
+                { id: "", label: "Projects", exact: true, icon: FolderKanban },
+                { id: "/usage", label: "Usage", exact: false, icon: ChartBarBig },
+            ],
+        },
+        { 
+            title: "Developers",
+            items: [
+                { id: "/keys", label: "API keys", exact: false, icon: KeyRound },
+            ],
+        },
+        { 
+            title: "Organisation", 
+            items: [
+                { id: "/members", label: "Members", exact: false, icon: UsersRound },
+                { id: "/acctbilling", label: "Billing", exact: false, icon: Wallet },
+                { id: "/settings", label: "Settings", exact: false, icon: Settings },
+            ] 
+        },
+    ];

@@ -66,7 +66,9 @@ export default function Signup() {
                         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                             <div className="flex items-center justify-between gap-2">
                                 <div className="flex flex-col gap-2 flex-1">
-                                    <label htmlFor="firstName" className="text-[13px] font-semibold text-fg">First Name</label>
+                                    <label htmlFor="firstName" className="text-[13px] font-semibold text-fg">
+                                        First Name <span className="text-accent" aria-label="Required">*</span>
+                                    </label>
                                     <input 
                                         type="text" 
                                         id="firstName" 
@@ -89,7 +91,9 @@ export default function Signup() {
                                 </div>
                             </div>
                             <div className="flex flex-col gap-2">
-                                <label htmlFor="email" className="text-[13px] font-semibold text-fg">Email</label>
+                                <label htmlFor="email" className="text-[13px] font-semibold text-fg">
+                                    Email <span className="text-accent" aria-label="Required">*</span>
+                                </label>
                                 <input 
                                     type="email" 
                                     id="email" 
@@ -140,7 +144,8 @@ export default function Signup() {
                                 </div>
                             </div>
                             <div className="flex flex-col gap-2">
-                                <label htmlFor="password" className="text-[13px] font-semibold text-fg">Password</label>
+                                <label htmlFor="password" className="text-[13px] font-semibold text-fg">
+                                    Password <span className="text-accent" aria-label="Required">*</span></label>
                                 <input 
                                     type="password" 
                                     id="password" 

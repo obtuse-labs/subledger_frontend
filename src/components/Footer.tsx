@@ -2,7 +2,7 @@ import { github } from "@/lib/api-data";
 
 export default function Footer() {
     return (
-        <footer className="flex flex-col gap-2.5 w-full bg-bg border-t border-border py-10 px-[clamp(20px,5vw,64px)] ">
+        <footer className="flex flex-col gap-0.5 w-full bg-bg border-t border-border py-5 px-[clamp(20px,5vw,64px)] ">
             <div className="text-sm font-semibold text-fg">
                 Subledger — billing backend for the Obtuse Labs portfolio
             </div>

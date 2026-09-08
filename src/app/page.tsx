@@ -17,12 +17,10 @@ export default function Home() {
 						</p>
 						<div className="flex gap-3 flex-wrap mb-9">
 							<a 
-								href={github}
-								target="_blank"
-								rel="noopener"
+								href="/signup"
 								className="bg-fg text-bg text-sm font-semibold px-5 py-3 rounded-lg"
 							>
-								View on GitHub
+								Get Started
 							</a>
 							<Link 
 								href="/docs"

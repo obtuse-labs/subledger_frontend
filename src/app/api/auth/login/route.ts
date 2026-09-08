@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 
 export async function POST(request: NextRequest) {
     const { email, password } = await request.json()
-    console.log({email, password});
 
     let response: Response;
     try {
@@ -17,7 +16,6 @@ export async function POST(request: NextRequest) {
     } catch {
         return NextResponse.json({ message: "Server unreachable" }, { status: 503 })
     }
-    console.log(response)
     const contentType = response.headers.get('content-type');
     const hasJson = contentType?.includes('application/json');
     const data = hasJson ? await response.json() : null;

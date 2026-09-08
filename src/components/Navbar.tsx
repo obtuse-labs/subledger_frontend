@@ -15,12 +15,13 @@ export default function Navbar() {
     const docsColor = pathname === "/docs" ? "text-fg" : "text-muted hover:text-fg";
     return (
         <>
-            <nav className="sticky top-0 z-20 bg-bg border-b border-border flex items-center justify-between px-[clamp(20px,5vw,64px)] py-4 gap-4 relative">
+            <nav className="sticky top-0 z-20 bg-bg border-b border-border flex items-center justify-between px-[clamp(20px,5vw,64px)] py-2 gap-2 relative">
                 <Link href="/" className="flex items-center gap-2 text-fg font-bold text-[17px] tracking-[-0.01em]">
                     <div className="w-[9px] h-[9px] rounded-[2px] bg-accent"></div> Subledger
                 </Link>
                 {/* Desktop Links */}
                 <div className="hidden md:flex items-center flex-wrap gap-[clamp(10px,3vw,24px)]">
+                    <ToggleButton toggle={toggle} theme={theme}/>
                     <Link 
                         href={"/"}
                         className={`text-sm font-medium ${featuresColor}`}
@@ -33,23 +34,18 @@ export default function Navbar() {
                     >
                         Docs
                     </Link>
-                    <a 
-                        href={`${LIVE_API}/docs`}
-                        target="_blank"
-                        rel="noopener"
+                    <Link 
+                        href={"/signup"}
                         className="text-sm font-medium text-muted hover:text-fg"
                     >
-                        Swagger docs
-                    </a>
-                    <ToggleButton toggle={toggle} theme={theme}/>
-                    <a 
-                        href="https://github.com/utkarsh-vats/subledger_backend"
-                        target="_blank"
-                        rel="noopener"
-                        className="bg-fg text-bg text-[13px] font-semibold py-[9px] px-4 rounded-[7px] whitespace-nowrap"
+                        Signup
+                    </Link>
+                    <Link 
+                        href="/login"
+                        className="bg-fg text-bg text-[13px] font-semibold py-[9px] px-4 rounded-[7px] whitespace-nowrap hover:bg-muted"
                     >
-                        View on GitHub
-                    </a>
+                        Login
+                    </Link>
                 </div>
                 {/* Mobile Menu */}
                 <div className="flex md:hidden items-center gap-3">
@@ -83,24 +79,20 @@ export default function Navbar() {
                         >
                             Docs
                         </Link>
-                        <a 
-                            href={`${LIVE_API}/docs`}
-                            target="_blank"
-                            rel="noopener"
+                        <Link 
+                            href={"/signup"}
                             className="text-sm font-medium text-muted hover:text-fg"
                             onClick={() => setMenuOpen(false)}
                         >
-                            Swagger docs
-                        </a>
-                        <a 
-                            href="https://github.com/utkarsh-vats/subledger_backend"
-                            target="_blank"
-                            rel="noopener"
+                            Signup
+                        </Link>
+                        <Link 
+                            href="/login"
                             className="bg-fg text-bg text-[13px] font-semibold py-[9px] px-4 rounded-[7px] whitespace-nowrap"
                             onClick={() => setMenuOpen(false)}
                         >
-                            View on GitHub
-                        </a>
+                            Login
+                        </Link>
                     </div>
                 )}
             </nav>
