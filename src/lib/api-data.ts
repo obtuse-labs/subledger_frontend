@@ -164,22 +164,53 @@ export const accountGroups: AccountGroupProps[] = [
         { 
             title: "Account",
             items: [
-                { id: "", label: "Projects", exact: true, icon: FolderKanban },
-                { id: "/usage", label: "Usage", exact: false, icon: ChartBarBig },
+                { id: "", label: "Projects", exact: true, icon: FolderKanban, soon: false },
+                { id: "/usage", label: "Usage", exact: false, icon: ChartBarBig, soon: true },
             ],
         },
         { 
             title: "Developers",
             items: [
-                { id: "/keys", label: "API keys", exact: false, icon: KeyRound },
+                { id: "/keys", label: "API keys", exact: false, icon: KeyRound, soon: true },
             ],
         },
         { 
             title: "Organisation", 
             items: [
-                { id: "/members", label: "Members", exact: false, icon: UsersRound },
-                { id: "/acctbilling", label: "Billing", exact: false, icon: Wallet },
-                { id: "/settings", label: "Settings", exact: false, icon: Settings },
+                { id: "/members", label: "Members", exact: false, icon: UsersRound, soon: true },
+                { id: "/acctbilling", label: "Billing", exact: false, icon: Wallet, soon: true },
+                { id: "/settings", label: "Settings", exact: false, icon: Settings, soon: true },
             ] 
         },
     ];
+
+export const projectGroups: AccountGroupProps[] = [
+    { 
+        title: "Project",
+        items: [
+            { id: "", label: "Overview", exact: true, icon: FolderKanban, soon: true },
+        ],
+    },
+    { 
+        title: "Billing",
+        items: [
+            { id: "/plans", label: "Plans", exact: false, icon: ChartBarBig, soon: false },
+            { id: "/customers", label: "Customers", exact: false, icon: KeyRound, soon: true },
+            { id: "/subscriptions", label: "Subscriptions", exact: false, icon: KeyRound, soon: true },
+            { id: "/invoices", label: "Invoices", exact: false, icon: KeyRound, soon: true },
+        ],
+    },
+    {
+        title: "Records",
+        items: [
+            { id: "/ledger", label: "Ledger", exact: false, icon: KeyRound, soon: true },
+        ],
+    },
+    { 
+        title: "Developers", 
+        items: [
+            { id: "/keys", label: "API keys", exact: false, icon: KeyRound, soon: true },
+            { id: "/gateway", label: "Gateway", exact: false, icon: Wallet, soon: true },
+        ] 
+    },
+];

@@ -23,6 +23,7 @@ export interface SidebarTabProps {
     count?: number;
     icon: React.ComponentType<{ className?: string }>;
     isActive: boolean;
+    soon?: boolean;
 }
 
 export interface SidebarTabInputProps {
@@ -30,6 +31,7 @@ export interface SidebarTabInputProps {
     label: string;
     exact: boolean;
     icon: React.ComponentType<{ className?: string }>;
+    soon?: boolean;
 }
 
 export interface AccountGroupProps {

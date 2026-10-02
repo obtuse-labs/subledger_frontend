@@ -12,6 +12,8 @@ export default async function Plans({ params }: { params: Promise<{ projectId: s
         projectID: projectId,
     });
     const planCountLabel = plans.length ? (plans.length == 1) ? "1 plan" : `${plans.length} plans` : `No plans found`;
+    const activePlanCount = plans.filter(plan => plan.status === 'active').length;
+    const activePlanCountLabel = activePlanCount ? `${activePlanCount} active` : `No active plans`;
     const gridColsTemplate = "grid-cols-[minmax(120px,2fr)minmax(74px,.9fr)minmax(64px,.8fr)minmax(80px,.9fr)minmax(48px,.5fr)84px]";
     return (
         <section className="w-full max-w-[1200px] mx-auto flex flex-col px-[clamp(20px,5vw,64px)] py-[clamp(20px,4vw,40px)]">
@@ -27,6 +29,7 @@ export default async function Plans({ params }: { params: Promise<{ projectId: s
             </p>
             <div className="flex items-center gap-3.5 mb-3.5 flex-wrap">
                 <span className="font-mono text-xs text-muted bg-bg-alt border border-border rounded-md py-[5px] px-2.5">{planCountLabel}</span>
+                <span className="font-mono text-xs text-muted bg-bg-alt border border-border rounded-md py-[5px] px-2.5">{activePlanCountLabel}</span>
                 {/* TODO(2c/backend): Add active plans count when endpoint is available */}
             </div>
             {plans.length > 0 ? (

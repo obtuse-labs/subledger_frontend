@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { SidebarTabProps } from "@/lib/types";
 
-export default function SidebarTab({ href, label, count, icon, isActive }: SidebarTabProps) {
+export default function SidebarTab({ href, label, count, icon, isActive, soon }: SidebarTabProps) {
     const inActiveStyle = "text-muted hover:text-fg hover:bg-bg-alt hover:rounded-[5px] p-2";
     const activeStyle = "text-fg bg-bg-alt rounded-[5px] p-2";
     const style = isActive ? activeStyle : inActiveStyle;
@@ -13,7 +13,10 @@ export default function SidebarTab({ href, label, count, icon, isActive }: Sideb
                 <Icon className="w-4 h-4" />
                 {label}
             </div>
-            {count != null && <span className="flex items-center px-2">{count}</span>}
+            <div className="flex items-center">
+                {count != null && <span className="flex items-center px-2">{count}</span>}
+                {soon && <span className="font-mono text-[10px] text-muted2 tracking-wider bg-bg-alt border border-border rounded-md py-1 px-1 uppercase">Soon</span>}
+            </div>
         </Link>
     );
 }
