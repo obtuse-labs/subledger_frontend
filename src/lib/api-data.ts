@@ -1,5 +1,5 @@
 import { AccountGroupProps } from "./types";
-import { ChartBarBig, FolderKanban, KeyRound, UsersRound, Wallet, Settings } from "lucide-react";
+import { ChartBarBig, FolderKanban, KeyRound, UsersRound, Wallet, Settings, Users, Globe, Files, Library, UserPlus, ReceiptText } from "lucide-react";
 
 // export const LIVE_API = "https://obtuse-labs-home.thresher-pirate.ts.net";
 export const LIVE_API = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -188,22 +188,22 @@ export const projectGroups: AccountGroupProps[] = [
     { 
         title: "Project",
         items: [
-            { id: "", label: "Overview", exact: true, icon: FolderKanban, soon: true },
+            { id: "", label: "Overview", exact: true, icon: Globe, soon: true },
         ],
     },
     { 
         title: "Billing",
         items: [
-            { id: "/plans", label: "Plans", exact: false, icon: ChartBarBig, soon: false },
-            { id: "/customers", label: "Customers", exact: false, icon: KeyRound, soon: true },
-            { id: "/subscriptions", label: "Subscriptions", exact: false, icon: KeyRound, soon: true },
-            { id: "/invoices", label: "Invoices", exact: false, icon: KeyRound, soon: true },
+            { id: "/plans", label: "Plans", exact: false, icon: Files, soon: false },
+            { id: "/customers", label: "Customers", exact: false, icon: Users, soon: true },
+            { id: "/subscriptions", label: "Subscriptions", exact: false, icon: UserPlus, soon: true },
+            { id: "/invoices", label: "Invoices", exact: false, icon: ReceiptText, soon: true },
         ],
     },
     {
         title: "Records",
         items: [
-            { id: "/ledger", label: "Ledger", exact: false, icon: KeyRound, soon: true },
+            { id: "/ledger", label: "Ledger", exact: false, icon: Library, soon: true },
         ],
     },
     { 

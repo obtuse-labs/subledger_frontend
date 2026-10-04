@@ -1,3 +1,4 @@
+// src/app/(marketing)/page.tsx
 import CodePanel from "@/components/CodePanel";
 import { HERO_BODY, STACK, PRIMITIVES, LEDGER_BODY, QUICKSTART_BODY } from "@/lib/api-data";
 import Link from "next/link";

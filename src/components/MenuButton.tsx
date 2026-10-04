@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Bookmark, BookmarkOff, Ellipsis, PencilLine } from "lucide-react";
 import PlanForm from "./PlanForm";
 import { Plan } from "@/lib/types";
-import { changePlanStatus } from "@/app/dashboard/[projectId]/plans/actions";
+import { changePlanStatus } from "@/app/(app)/dashboard/[projectId]/plans/actions";
 import { useRouter } from "next/navigation";
 
 export default function MenuButton({ projectId, plan }: { projectId: string; plan: Plan }) {

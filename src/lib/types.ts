@@ -12,9 +12,16 @@ export interface SignupRequest {
     email: string;
     name: string;
     password: string;
-    user_type?: string;
+    user_type?: "student" | "professional" | "other";
     account_name?: string;
     account_type?: string;
+}
+
+export interface UserResponse {
+    id: string;
+    email: string;
+    name: string;
+    user_type?: "student" | "professional" | "other" | null;
 }
 
 export interface SidebarTabProps {

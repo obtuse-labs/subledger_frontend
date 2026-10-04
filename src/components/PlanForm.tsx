@@ -1,7 +1,7 @@
 // @/components/PlanForm.tsx
 "use client";
 
-import { createPlan, updatePlan } from "@/app/dashboard/[projectId]/plans/actions";
+import { createPlan, updatePlan } from "@/app/(app)/dashboard/[projectId]/plans/actions";
 import { Plan, PlanFormState } from "@/lib/types";
 import { useActionState, useEffect } from "react";
 import { X } from "lucide-react";

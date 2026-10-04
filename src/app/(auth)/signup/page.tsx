@@ -10,7 +10,7 @@ export default function Signup() {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [confirmPassword, setConfirmPassword] = useState<string>("");
-    const [userType, setUserType] = useState<string>("");
+    const [userType, setUserType] = useState<"student" | "professional" | "other" | "">("");
     const [accountName, setAccountName] = useState<string>("");
     const [accountType, setAccountType] = useState<string>("individual");
     const [error, setError] = useState<string>("");
