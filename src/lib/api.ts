@@ -1,7 +1,8 @@
 import 'server-only';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { RequestOptions, ApiError } from './types';
+import { RequestOptions, ApiError, Project } from './types';
+import { cache } from 'react';
 
 const base_url = process.env.API_BASE_URL
 
@@ -60,4 +61,8 @@ export const accountRequest = (path: string, opts: RequestOptions = {}) => {
 export const projectRequest = (path: string, opts: RequestOptions & { projectID: string }) => {
     return apiRequest(path, opts)
 }
+
+export const getProjects: () => Promise<Project[]> = cache(async () => {
+    return await accountRequest("/projects");
+});
 

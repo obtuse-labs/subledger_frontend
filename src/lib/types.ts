@@ -33,6 +33,11 @@ export interface AccountResponse {
     created_at: string;
 }
 
+export interface MeResponse {
+    user: UserResponse;
+    accounts: AccountResponse[];
+}
+
 export interface SidebarTabProps {
     href: string;
     label: string;

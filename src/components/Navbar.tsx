@@ -7,16 +7,27 @@ import Link from "next/link";
 import Image from "next/image";
 import ToggleButton from "./ToggleButton";
 import { useState } from "react";
-import { UserResponse, AccountResponse } from "@/lib/types";
+import { UserResponse, AccountResponse, Project } from "@/lib/types";
 import UserDropdown from "./UserDropdown";
+import ProjectDropdown from "./ProjectDropDown";
 
-export default function Navbar({ type, user, account }: { type?: "app" | "marketing" | "login" | "signup"; user?: UserResponse; account?: AccountResponse }) {
+interface NavbarProps {
+    type?: "app" | "marketing" | "login" | "signup";
+    user?: UserResponse;
+    account?: AccountResponse;
+    projects?: Project[];
+}
+
+export default function Navbar({ type, user, account, projects }: NavbarProps) {
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
     const pathname = usePathname();
+    const segments = pathname.split("/").filter(Boolean);
     const { theme, toggle } = useTheme();
     const featuresColor = pathname === "/" ? "text-fg" : "text-muted hover:text-fg";
     const docsColor = pathname === "/docs" ? "text-fg" : "text-muted hover:text-fg";
     const homeRedirectPath = type === "app" ? "/dashboard" : "/";
+    const projectIdFromPath = (segments[0] === "dashboard" && segments[1] && projects?.some(p => p.id === segments[1])) ? segments[1] : null;
+    const currentProjectTab = !!projectIdFromPath ? segments[2] : null;
     return (
         <>
             <nav className="sticky top-0 z-20 bg-bg border-b border-border flex items-center justify-between px-[clamp(20px,5vw,64px)] py-2 gap-2 relative">
@@ -25,15 +36,28 @@ export default function Navbar({ type, user, account }: { type?: "app" | "market
                         <Image src="/subledger-2b.svg" alt="Subledger Logo" width={18} height={18} />
                         Subledger
                     </Link>
-                    {type === "app" && (
+                    {type === "app" && !!account && (
                         <>
-                            <p className="text-border font-medium text-base tracking-[-0.01em]">/</p>
+                            <span className="text-border font-medium text-base tracking-[-0.01em]">/</span>
                             <Link
                                 href={"/dashboard"}
-                                className="text-fg font-bold text-sm tracking-[-0.01em] cursor-pointer hover:bg-bg-alt px-2 py-1 rounded-md"
+                                className={`${!!projectIdFromPath ? "text-muted" : "text-fg"} hover:text-fg font-bold text-sm tracking-[-0.01em] hover:bg-bg-alt px-2 py-1 rounded-md`}
                             >
                                 {account?.name}
                             </Link>
+                            {/* Project Name and Dropdown */}
+                            {!!projectIdFromPath && projects && projects.length > 0 ? (
+                                <>
+                                    <span className="text-border font-medium text-base tracking-[-0.01em]">/</span>
+                                    <ProjectDropdown 
+                                        projects={projects}
+                                        currentProjectId={projectIdFromPath}
+                                        currentProjectTab={!!currentProjectTab ? currentProjectTab : ""} 
+                                    />
+                                </>
+                            ) : (
+                                <span className="font-mono text-xs text-muted bg-bg-alt py-0.5 px-2 border border-border rounded-sm">account</span>
+                            )}
                         </>
                     )}
                 </div>
