@@ -49,7 +49,7 @@ export default function UserDropdown({ user }: { user: UserResponse }) {
                 )}
             </button>
             {userDropdownOpen && (
-                <div className="absolute min-w-[220px] top-full right-0 mt-2 bg-bg border border-border rounded-[7px] p-2 shadow-elev z-40 flex flex-col">
+                <div className="absolute min-w-55 top-full right-0 mt-2 bg-bg border border-border rounded-[7px] p-2 shadow-elev z-40 flex flex-col">
                     <div className="pt-2 px-2.5 pb-2.5 border-b border-border mb-1.5">
                         <h2 className="text-sm font-semibold text-fg">{user.name}</h2>
                         <p className="font-mono text-xs text-muted2">{user.email}</p>

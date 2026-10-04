@@ -4,6 +4,7 @@
 import { usePathname } from "next/navigation";
 import { useTheme } from "./ThemeProvider";
 import Link from "next/link";
+import Image from "next/image";
 import ToggleButton from "./ToggleButton";
 import { useState } from "react";
 import { UserResponse } from "@/lib/types";
@@ -20,7 +21,8 @@ export default function Navbar({ type, user }: { type?: "app" | "marketing" | "l
         <>
             <nav className="sticky top-0 z-20 bg-bg border-b border-border flex items-center justify-between px-[clamp(20px,5vw,64px)] py-2 gap-2 relative">
                 <Link href={homeRedirectPath} className="flex items-center gap-2 text-fg font-bold text-[17px] tracking-[-0.01em]">
-                    <div className="w-[9px] h-[9px] rounded-[2px] bg-accent"></div> Subledger
+                    <Image src="/subledger-2b.svg" alt="Subledger Logo" width={18} height={18} />
+                    Subledger
                 </Link>
                 {/* Desktop Links */}
                 <div className="min-h-12 hidden md:flex items-center flex-wrap gap-[clamp(10px,3vw,24px)]">
