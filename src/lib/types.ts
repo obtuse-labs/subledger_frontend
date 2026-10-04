@@ -21,6 +21,7 @@ export interface UserResponse {
     id: string;
     email: string;
     name: string;
+    status: "active" | "inactive";
     user_type?: "student" | "professional" | "other" | null;
 }
 

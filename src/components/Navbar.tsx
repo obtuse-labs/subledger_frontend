@@ -20,15 +20,20 @@ export default function Navbar({ type, user, account }: { type?: "app" | "market
     return (
         <>
             <nav className="sticky top-0 z-20 bg-bg border-b border-border flex items-center justify-between px-[clamp(20px,5vw,64px)] py-2 gap-2 relative">
-                <div className="flex items-center gap-4">
-                    <Link href={homeRedirectPath} className="flex items-center gap-2 text-fg font-bold text-[17px] tracking-[-0.01em]">
+                <div className="flex items-center gap-3">
+                    <Link href={homeRedirectPath} className="flex items-center gap-2 text-fg font-bold text-base tracking-[-0.01em]">
                         <Image src="/subledger-2b.svg" alt="Subledger Logo" width={18} height={18} />
                         Subledger
                     </Link>
                     {type === "app" && (
                         <>
-                            <p className="text-muted2 font-bold text-base tracking-[-0.01em]">/</p>
-                            <p className="text-fg font-bold text-base tracking-[-0.01em] cursor-pointer">{"Obtuse Labs"}</p>
+                            <p className="text-border font-medium text-base tracking-[-0.01em]">/</p>
+                            <Link
+                                href={"/dashboard"}
+                                className="text-fg font-bold text-sm tracking-[-0.01em] cursor-pointer hover:bg-bg-alt px-2 py-1 rounded-md"
+                            >
+                                {account?.name}
+                            </Link>
                         </>
                     )}
                 </div>
