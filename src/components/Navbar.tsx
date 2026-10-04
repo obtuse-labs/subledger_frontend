@@ -7,10 +7,10 @@ import Link from "next/link";
 import Image from "next/image";
 import ToggleButton from "./ToggleButton";
 import { useState } from "react";
-import { UserResponse } from "@/lib/types";
+import { UserResponse, AccountResponse } from "@/lib/types";
 import UserDropdown from "./UserDropdown";
 
-export default function Navbar({ type, user }: { type?: "app" | "marketing" | "login" | "signup"; user?: UserResponse }) {
+export default function Navbar({ type, user, account }: { type?: "app" | "marketing" | "login" | "signup"; user?: UserResponse; account?: AccountResponse }) {
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
     const pathname = usePathname();
     const { theme, toggle } = useTheme();
@@ -20,10 +20,18 @@ export default function Navbar({ type, user }: { type?: "app" | "marketing" | "l
     return (
         <>
             <nav className="sticky top-0 z-20 bg-bg border-b border-border flex items-center justify-between px-[clamp(20px,5vw,64px)] py-2 gap-2 relative">
-                <Link href={homeRedirectPath} className="flex items-center gap-2 text-fg font-bold text-[17px] tracking-[-0.01em]">
-                    <Image src="/subledger-2b.svg" alt="Subledger Logo" width={18} height={18} />
-                    Subledger
-                </Link>
+                <div className="flex items-center gap-4">
+                    <Link href={homeRedirectPath} className="flex items-center gap-2 text-fg font-bold text-[17px] tracking-[-0.01em]">
+                        <Image src="/subledger-2b.svg" alt="Subledger Logo" width={18} height={18} />
+                        Subledger
+                    </Link>
+                    {type === "app" && (
+                        <>
+                            <p className="text-muted2 font-bold text-base tracking-[-0.01em]">/</p>
+                            <p className="text-fg font-bold text-base tracking-[-0.01em] cursor-pointer">{"Obtuse Labs"}</p>
+                        </>
+                    )}
+                </div>
                 {/* Desktop Links */}
                 <div className="min-h-12 hidden md:flex items-center flex-wrap gap-[clamp(10px,3vw,24px)]">
                     <ToggleButton toggle={toggle} theme={theme}/>

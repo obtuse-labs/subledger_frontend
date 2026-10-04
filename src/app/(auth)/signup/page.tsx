@@ -29,7 +29,7 @@ export default function Signup() {
                 name: `${firstName.trim()} ${lastName.trim()}`.trim(),
                 email: email.trim(),
                 password: password,
-                user_type: userType.trim() === "" ? undefined : userType,
+                user_type: userType === "" ? undefined : userType,
                 account_name: accountName.trim(),
                 account_type: accountType,
             }
@@ -121,7 +121,7 @@ export default function Signup() {
                                     <select 
                                         id="userType" 
                                         value={userType} 
-                                        onChange={(e) => setUserType(e.target.value)} 
+                                        onChange={(e) => setUserType(e.target.value as "student" | "professional" | "other" | "")} 
                                         className="w-full px-4 py-2 text-[14px] text-fg bg-bg border border-border rounded-[7px] focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20"
                                     >
                                         <option value="">Select</option>

@@ -24,6 +24,14 @@ export interface UserResponse {
     user_type?: "student" | "professional" | "other" | null;
 }
 
+export interface AccountResponse {
+    id: string;
+    name: string;
+    account_type: "individual" | "organization";
+    status: "active" | "inactive";
+    created_at: string;
+}
+
 export interface SidebarTabProps {
     href: string;
     label: string;
