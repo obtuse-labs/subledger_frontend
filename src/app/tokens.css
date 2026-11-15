@@ -1,0 +1,487 @@
+/* ==========================================================================
+SubLedger design tokens
+Generated from the Figma file "Subledger-v1-MVP" (variables + styles).
+Names match the Figma variables: "bg/canvas" in Figma is --bg-canvas here.
+Do not hand-edit values; change them in Figma and regenerate.
+
+Layers
+1. Primitives   raw palette. Never use these directly in components.
+2. Semantic     what components use. Light is the default; dark overrides.
+3. Tailwind v4  @theme mapping, so tokens become utilities (bg-canvas, text-fg).
+				Not on Tailwind? Delete section 3 and use the variables directly.
+4. Type         one class per Figma text style (.type-heading-h1, ...).
+========================================================================== */
+
+/* If the project's globals.css already has `@import "tailwindcss";`, import this
+file right after it and delete the line below. */
+/* @import "tailwindcss"; */
+
+/* 1. Primitives ----------------------------------------------------------- */
+:root {
+--ink-0: #FFFFFF;
+--ink-25: #FAFAF8;
+--ink-50: #F4F3EF;
+--ink-100: #EAE8E3;
+--ink-200: #D9D7D1;
+--ink-300: #B5B3AD;
+--ink-400: #8C8A85;
+--ink-500: #6A6965;
+--ink-600: #4B4B4A;
+--ink-700: #2C2D33;
+--ink-750: #24252C;
+--ink-800: #1C1D23;
+--ink-850: #16171C;
+--ink-900: #111216;
+--ink-950: #0C0D10;
+
+--night-800: #1B1D29;
+--night-900: #151722;
+
+--cream-100: #F5F2EC;
+
+--ember-50: #FFF4EE;
+--ember-100: #FFE4D4;
+--ember-200: #FFC6A5;
+--ember-300: #FF9F6E;
+--ember-400: #F77A3E;
+--ember-500: #E8541C;
+--ember-600: #C7410F;
+--ember-700: #9F330D;
+--ember-900: #2B160D;
+
+--green-50: #ECFDF5;
+--green-100: #D1FAE5;
+--green-400: #34D399;
+--green-500: #10B981;
+--green-600: #059669;
+--green-700: #047857;
+--green-950: #0B2A20;
+
+--red-50: #FEF2F2;
+--red-100: #FEE2E2;
+--red-400: #F87171;
+--red-500: #EF4444;
+--red-600: #DC2626;
+--red-700: #B91C1C;
+--red-950: #2D1214;
+
+--amber-50: #FFFBEB;
+--amber-100: #FEF3C7;
+--amber-400: #FBBF24;
+--amber-500: #F59E0B;
+--amber-600: #D97706;
+--amber-700: #B45309;
+--amber-950: #2B1F0A;
+
+--blue-50: #EFF6FF;
+--blue-100: #DBEAFE;
+--blue-400: #60A5FA;
+--blue-500: #3B82F6;
+--blue-600: #2563EB;
+--blue-700: #1D4ED8;
+--blue-950: #0F1B33;
+
+--code-fg: #E7E5E0;
+--code-muted: #7A7974;
+--code-key: #8CC8FF;
+--code-string: #F5C07A;
+--code-number: #B5E3A1;
+
+--alpha-scrim: rgb(12 13 16 / 0.6);
+--alpha-white10: rgb(255 255 255 / 0.1);
+--alpha-black06: rgb(12 13 16 / 0.06);
+
+/* 4px grid. These equal Tailwind's default spacing scale (p-4 = 16px). */
+--space-0-5: 2px;
+--space-1: 4px;
+--space-2: 8px;
+--space-3: 12px;
+--space-4: 16px;
+--space-5: 20px;
+--space-6: 24px;
+--space-8: 32px;
+--space-10: 40px;
+--space-12: 48px;
+--space-16: 64px;
+--space-20: 80px;
+--space-24: 96px;
+}
+
+/* 2. Semantic tokens: light (default) -------------------------------------- */
+:root,
+[data-theme="light"] {
+color-scheme: light;
+--bg-canvas: var(--ink-25);
+--bg-subtle: var(--ink-50);
+--bg-surface: var(--ink-0);
+--bg-surface-hover: var(--ink-50);
+--bg-inverse: var(--ink-900);
+--bg-code: var(--ink-900);
+--bg-code-header: var(--ink-850);
+--bg-scrim: var(--alpha-scrim);
+
+--border-default: var(--ink-100);
+--border-strong: var(--ink-200);
+--border-code: var(--ink-750);
+
+--text-primary: var(--ink-900);
+--text-secondary: var(--ink-500);
+--text-tertiary: var(--ink-400);
+--text-inverse: var(--ink-0);
+--text-inverse-muted: var(--ink-300);
+--text-disabled: var(--ink-300);
+
+--accent-default: var(--ember-500);
+--accent-hover: var(--ember-600);
+--accent-subtle: var(--ember-50);
+--accent-text: var(--ember-600);
+--accent-on: var(--ink-0);
+
+--btn-primary-bg: var(--ink-900);
+--btn-primary-hover: var(--ink-700);
+--btn-primary-fg: var(--ink-0);
+--btn-secondary-bg: var(--ink-0);
+--btn-secondary-hover: var(--ink-50);
+
+--focus-ring: var(--ember-200);
+
+--status-success-fg: var(--green-700);
+--status-success-bg: var(--green-50);
+--status-success-solid: var(--green-500);
+--status-danger-fg: var(--red-700);
+--status-danger-bg: var(--red-50);
+--status-danger-solid: var(--red-500);
+--status-warning-fg: var(--amber-700);
+--status-warning-bg: var(--amber-50);
+--status-warning-solid: var(--amber-500);
+--status-info-fg: var(--blue-700);
+--status-info-bg: var(--blue-50);
+--status-info-solid: var(--blue-500);
+--status-neutral-fg: var(--ink-600);
+--status-neutral-bg: var(--ink-50);
+--status-neutral-solid: var(--ink-400);
+
+--code-fg: var(--code-fg);
+--code-muted: var(--code-muted);
+--code-key: var(--code-key);
+--code-string: var(--code-string);
+--code-number: var(--code-number);
+--code-accent: var(--ember-400);
+
+--elevation-1: 0 1px 2px rgb(12 13 16 / 0.06);
+--elevation-2: 0 2px 6px rgb(12 13 16 / 0.06), 0 8px 24px rgb(12 13 16 / 0.08);
+--elevation-3: 0 12px 40px rgb(12 13 16 / 0.18), 0 2px 6px rgb(12 13 16 / 0.06);
+--elevation-focus: 0 0 0 3px var(--focus-ring);
+}
+
+/* 2. Semantic tokens: dark --------------------------------------------------
+Selector: use whichever the existing ThemeProvider sets (data-theme or .dark)
+and delete the other. */
+[data-theme="dark"],
+.dark {
+color-scheme: dark;
+--bg-canvas: var(--ink-950);
+--bg-subtle: var(--ink-900);
+--bg-surface: var(--ink-850);
+--bg-surface-hover: var(--ink-800);
+--bg-inverse: var(--night-800);
+--bg-code: var(--ink-850);
+--bg-code-header: var(--ink-800);
+--bg-scrim: var(--alpha-scrim);
+
+--border-default: var(--ink-750);
+--border-strong: var(--ink-700);
+--border-code: var(--ink-750);
+
+--text-primary: var(--ink-50);
+--text-secondary: var(--ink-300);
+--text-tertiary: var(--ink-500);
+--text-inverse: var(--ink-50);
+--text-inverse-muted: var(--ink-300);
+--text-disabled: var(--ink-600);
+
+--accent-default: var(--ember-500);
+--accent-hover: var(--ember-400);
+--accent-subtle: var(--ember-900);
+--accent-text: var(--ember-400);
+--accent-on: var(--ink-0);
+
+--btn-primary-bg: var(--cream-100);
+--btn-primary-hover: var(--ink-100);
+--btn-primary-fg: var(--ink-900);
+--btn-secondary-bg: var(--ink-950);
+--btn-secondary-hover: var(--ink-800);
+
+--focus-ring: var(--ember-700);
+
+--status-success-fg: var(--green-400);
+--status-success-bg: var(--green-950);
+--status-success-solid: var(--green-500);
+--status-danger-fg: var(--red-400);
+--status-danger-bg: var(--red-950);
+--status-danger-solid: var(--red-500);
+--status-warning-fg: var(--amber-400);
+--status-warning-bg: var(--amber-950);
+--status-warning-solid: var(--amber-500);
+--status-info-fg: var(--blue-400);
+--status-info-bg: var(--blue-950);
+--status-info-solid: var(--blue-500);
+--status-neutral-fg: var(--ink-300);
+--status-neutral-bg: var(--ink-800);
+--status-neutral-solid: var(--ink-500);
+
+--code-fg: var(--code-fg);
+--code-muted: var(--code-muted);
+--code-key: var(--code-key);
+--code-string: var(--code-string);
+--code-number: var(--code-number);
+--code-accent: var(--ember-400);
+
+/* Figma has one set of elevation styles. These darker shadows are an adaptation
+	for dark surfaces, where the light-theme shadows are invisible. */
+--elevation-1: 0 1px 2px rgb(0 0 0 / 0.4);
+--elevation-2: 0 2px 6px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.5);
+--elevation-3: 0 12px 40px rgb(0 0 0 / 0.6), 0 2px 6px rgb(0 0 0 / 0.4);
+}
+
+/* 3. Tailwind v4 theme mapping ------------------------------------------------
+`inline` makes utilities reference the variables above, so they follow the theme. */
+@theme inline {
+/* Surfaces: bg-canvas, bg-surface, ... */
+--color-canvas: var(--bg-canvas);
+--color-subtle: var(--bg-subtle);
+--color-surface: var(--bg-surface);
+--color-surface-hover: var(--bg-surface-hover);
+--color-inverse: var(--bg-inverse);
+--color-code: var(--bg-code);
+--color-code-header: var(--bg-code-header);
+--color-scrim: var(--bg-scrim);
+
+/* Borders: border-line, border-line-strong */
+--color-line: var(--border-default);
+--color-line-strong: var(--border-strong);
+--color-line-code: var(--border-code);
+
+/* Text: text-fg, text-fg-muted, ... */
+--color-fg: var(--text-primary);
+--color-fg-muted: var(--text-secondary);
+--color-fg-subtle: var(--text-tertiary);
+--color-fg-inverse: var(--text-inverse);
+--color-fg-inverse-muted: var(--text-inverse-muted);
+--color-fg-disabled: var(--text-disabled);
+
+/* Accent (ember). One accent CTA per view. */
+--color-accent: var(--accent-default);
+--color-accent-hover: var(--accent-hover);
+--color-accent-subtle: var(--accent-subtle);
+--color-accent-text: var(--accent-text);
+--color-on-accent: var(--accent-on);
+
+/* Buttons */
+--color-btn-primary: var(--btn-primary-bg);
+--color-btn-primary-hover: var(--btn-primary-hover);
+--color-btn-primary-fg: var(--btn-primary-fg);
+--color-btn-secondary: var(--btn-secondary-bg);
+--color-btn-secondary-hover: var(--btn-secondary-hover);
+
+/* Focus */
+--color-ring: var(--focus-ring);
+
+/* Status: text-success-fg, bg-success-soft, bg-success (solid: dots, bars). */
+--color-success-fg: var(--status-success-fg);
+--color-success-soft: var(--status-success-bg);
+--color-success: var(--status-success-solid);
+--color-danger-fg: var(--status-danger-fg);
+--color-danger-soft: var(--status-danger-bg);
+--color-danger: var(--status-danger-solid);
+--color-warning-fg: var(--status-warning-fg);
+--color-warning-soft: var(--status-warning-bg);
+--color-warning: var(--status-warning-solid);
+--color-info-fg: var(--status-info-fg);
+--color-info-soft: var(--status-info-bg);
+--color-info: var(--status-info-solid);
+--color-neutral-fg: var(--status-neutral-fg);
+--color-neutral-soft: var(--status-neutral-bg);
+--color-neutral: var(--status-neutral-solid);
+
+/* Code blocks (always dark, in both themes) */
+--color-code-fg: var(--code-fg);
+--color-code-muted: var(--code-muted);
+--color-code-key: var(--code-key);
+--color-code-string: var(--code-string);
+--color-code-number: var(--code-number);
+--color-code-accent: var(--code-accent);
+
+/* Shadows: shadow-1 (cards, inputs), shadow-2 (menus), shadow-3 (modals, toasts), shadow-focus */
+--shadow-1: var(--elevation-1);
+--shadow-2: var(--elevation-2);
+--shadow-3: var(--elevation-3);
+--shadow-focus: var(--elevation-focus);
+}
+
+/* Static theme values. These replace Tailwind's defaults of the same name:
+rounded-sm is 6px here, rounded-md 8px, rounded-lg 12px, rounded-xl 16px. */
+@theme {
+--radius-xs: 4px;
+--radius-sm: 6px;
+--radius-md: 8px;
+--radius-lg: 12px;
+--radius-xl: 16px;
+--radius-full: 999px;
+
+/* If fonts are loaded with next/font, put its CSS variables first in these stacks. */
+--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+/* Inter sits second so a glyph missing from JetBrains Mono (check the rupee sign) falls back to it. */
+--font-mono: "JetBrains Mono", "Inter", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* 4. Type styles: one class per Figma text style -------------------------------
+In the components layer, so a Tailwind utility on the same element still wins. */
+@layer components {
+.type-display-xl {
+	font-family: var(--font-sans);
+	font-weight: 800;
+	font-size: 72px;
+	line-height: 76px;
+	letter-spacing: -0.035em;
+}
+.type-display-l {
+	font-family: var(--font-sans);
+	font-weight: 800;
+	font-size: 56px;
+	line-height: 60px;
+	letter-spacing: -0.03em;
+}
+.type-display-m {
+	font-family: var(--font-sans);
+	font-weight: 800;
+	font-size: 44px;
+	line-height: 50px;
+	letter-spacing: -0.025em;
+}
+.type-heading-h1 {
+	font-family: var(--font-sans);
+	font-weight: 700;
+	font-size: 36px;
+	line-height: 42px;
+	letter-spacing: -0.02em;
+}
+.type-heading-h2 {
+	font-family: var(--font-sans);
+	font-weight: 700;
+	font-size: 28px;
+	line-height: 34px;
+	letter-spacing: -0.015em;
+}
+.type-heading-h3 {
+	font-family: var(--font-sans);
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 28px;
+	letter-spacing: -0.01em;
+}
+.type-heading-h4 {
+	font-family: var(--font-sans);
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: -0.005em;
+}
+.type-body-l {
+	font-family: var(--font-sans);
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 28px;
+	letter-spacing: 0;
+}
+.type-body-m {
+	font-family: var(--font-sans);
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 24px;
+	letter-spacing: 0;
+}
+.type-body-s {
+	font-family: var(--font-sans);
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 20px;
+	letter-spacing: 0;
+}
+.type-body-xs {
+	font-family: var(--font-sans);
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: 0;
+}
+.type-label-l {
+	font-family: var(--font-sans);
+	font-weight: 600;
+	font-size: 15px;
+	line-height: 20px;
+	letter-spacing: -0.005em;
+}
+.type-label-m {
+	font-family: var(--font-sans);
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: 0;
+}
+.type-label-s {
+	font-family: var(--font-sans);
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: 0;
+}
+.type-stat-value {
+	font-family: var(--font-sans);
+	font-weight: 700;
+	font-size: 28px;
+	line-height: 34px;
+	letter-spacing: -0.02em;
+}
+.type-mono-eyebrow {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+.type-mono-code {
+	font-family: var(--font-mono);
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 22px;
+	letter-spacing: 0;
+}
+.type-mono-data {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 20px;
+	letter-spacing: 0;
+}
+.type-mono-small {
+	font-family: var(--font-mono);
+	font-weight: 400;
+	font-size: 11px;
+	line-height: 16px;
+	letter-spacing: 0;
+}
+.type-mono-value {
+	font-family: var(--font-mono);
+	font-weight: 500;
+	font-size: 22px;
+	line-height: 28px;
+	letter-spacing: -0.01em;
+}
+
+/* Amounts and dates line up in table columns. */
+.tabular {
+	font-variant-numeric: tabular-nums;
+}
+}

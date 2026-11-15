@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local docs
 /local_docs
+/local_docs/
+/design
+/design/
