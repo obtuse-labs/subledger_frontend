@@ -19,7 +19,7 @@ If this repo already has a `CLAUDE.md`, merge this into it rather than replacing
    - `getProjects`, wrapped in React `cache()`.
    - Server Actions in `plans/actions.ts`: signatures, `revalidatePath`, `router.refresh()`.
 2. **Every backend call stays on the server**, through `accountRequest` / `projectRequest`. No client-side fetch to the API, no token in client JS, no `localStorage` for server data.
-3. **Never invent an endpoint, field or query param.** If a screen needs data the API doesn't return, stop and list what's missing. Don't fill it with placeholder numbers, and don't loop requests per row to get it. The known gaps are in `frontend-backend-gaps.md` (ask Utkarsh for it if it isn't in `docs/`).
+3. **Never invent an endpoint, field or query param.** If a screen needs data the API doesn't return, stop and list what's missing. Don't fill it with placeholder numbers, and don't loop requests per row to get it. The known gaps are in `local_docs/docs/frontend-backend-gaps.md`. That folder is gitignored, so search may skip it; open the file by this exact path.
 4. **No dead chrome.** If a control has no backend, leave it out (list below). Don't build it disabled, and don't wire it to nothing.
 5. **Tokens only.** No hex values, no Tailwind palette colours (`bg-zinc-900`), no arbitrary colour values. Tailwind can't see interpolated class names (`bg-[${x}]`), so data-driven colours go in inline `style` with a CSS variable.
 6. **No new dependencies without asking.** `lucide-react` is already here and is the icon set. Ask before adding a chart or UI library.
@@ -44,22 +44,22 @@ If this repo already has a `CLAUDE.md`, merge this into it rather than replacing
 
 Fonts are Inter (UI and headings) and JetBrains Mono (code, IDs, amounts in tables, eyebrows, API enum values). Load both with `next/font` and put their CSS variables first in `--font-sans` / `--font-mono`.
 
-| Use                                                                 | Class                                                                                                      |
-| ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Landing hero                                                        | `type-display-xl`                                                                                          |
-| Page-level marketing headline                                       | `type-display-l`                                                                                           |
-| Section headline                                                    | `type-display-m`                                                                                           |
-| Dashboard page title                                                | `type-heading-h1`                                                                                          |
-| Card or docs section title                                          | `type-heading-h2` / `type-heading-h3`                                                                      |
-| Card header, modal title                                            | `type-heading-h4`                                                                                          |
-| Body                                                                | `type-body-l` (marketing lead), `type-body-m` (default), `type-body-s` (tables, help text), `type-body-xs` |
-| Buttons, form labels, nav                                           | `type-label-l` / `type-label-m` / `type-label-s`                                                           |
-| Section eyebrow, written `/ CORE PRIMITIVES`, in `text-accent-text` | `type-mono-eyebrow`                                                                                        |
-| Table header                                                        | `type-mono-eyebrow` in `text-fg-subtle`                                                                    |
-| Code                                                                | `type-mono-code`                                                                                           |
-| IDs, amounts and timestamps in tables                               | `type-mono-data`                                                                                           |
-| Badge text, small mono                                              | `type-mono-small`                                                                                          |
-| KPI number                                                          | `type-mono-value`                                                                                          |
+| Use | Class |
+|---|---|
+| Landing hero | `type-display-xl` |
+| Page-level marketing headline | `type-display-l` |
+| Section headline | `type-display-m` |
+| Dashboard page title | `type-heading-h1` |
+| Card or docs section title | `type-heading-h2` / `type-heading-h3` |
+| Card header, modal title | `type-heading-h4` |
+| Body | `type-body-l` (marketing lead), `type-body-m` (default), `type-body-s` (tables, help text), `type-body-xs` |
+| Buttons, form labels, nav | `type-label-l` / `type-label-m` / `type-label-s` |
+| Section eyebrow, written `/ CORE PRIMITIVES`, in `text-accent-text` | `type-mono-eyebrow` |
+| Table header | `type-mono-eyebrow` in `text-fg-subtle` |
+| Code | `type-mono-code` |
+| IDs, amounts and timestamps in tables | `type-mono-data` |
+| Badge text, small mono | `type-mono-small` |
+| KPI number | `type-mono-value` |
 
 Check that ₹ renders in mono amounts. The `--font-mono` stack falls back to Inter for any glyph JetBrains Mono lacks; don't "fix" it by changing fonts.
 
@@ -67,40 +67,40 @@ Check that ₹ renders in mono amounts. The `--font-mono` stack falls back to In
 
 Build these in `src/components/ui/`. Reuse the existing logic where a component already exists (`CodePanel`, `ToggleButton`, `Sidebar` / `SidebarTab`, `Navbar`, `UserDropdown`, `ProjectDropdown`, `MenuButton`, `PlanForm`, `PlanFormPanel`, `ErrorState`, `ComingSoon`) and restyle it. References are in `design/components/`.
 
-| Component                         | Variants                                                                                                                      | Notes                                                                                                                                                                                                                      |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Button                            | `primary` `secondary` `ghost` `accent` `danger` × `sm` (32px) `md` (40px) `lg` (48px)                                         | Radius 6px for `sm`, 8px otherwise. Optional leading or trailing icon. Disabled is 40% opacity. `danger` only for destructive confirms.                                                                                    |
-| IconButton                        | `secondary` `ghost` `primary` × `sm` `md`                                                                                     | Square. Needs an `aria-label`.                                                                                                                                                                                             |
-| Badge                             | tone `success` `danger` `warning` `info` `neutral` `accent` × kind `soft` `dot` `outline`                                     | Mono, lowercase. The label is the API enum value, unchanged.                                                                                                                                                               |
-| MethodBadge                       | `GET` `POST` `PATCH` `DELETE`                                                                                                 | Docs only.                                                                                                                                                                                                                 |
-| TechChip, Kbd, Avatar             | Avatar `sm` 24, `md` 32, `lg` 40                                                                                              | Avatar shows initials.                                                                                                                                                                                                     |
-| Input                             | `text` `select` `search` `password` × default, focus, error, disabled                                                         | 40px tall, radius 8px, label above, hint below. An error replaces the hint. Focus is an accent border plus `shadow-focus`.                                                                                                 |
-| Textarea, Checkbox, Radio, Switch |                                                                                                                               |                                                                                                                                                                                                                            |
-| Tabs                              | `underline` (sections of a page, optional count), `segment` (chart range, modal toggles), `pill` (quick filters above a list) |                                                                                                                                                                                                                            |
-| Menu, MenuItem                    | default, hover, selected (check mark), destructive                                                                            | 240px wide, 6px padding, 36px rows, `shadow-2`. Close on outside click with the existing ref-based pattern.                                                                                                                |
-| StatCard                          | `default` `inverse`                                                                                                           | At most one `inverse` card per row.                                                                                                                                                                                        |
-| LedgerEntry                       | `invoice_created` `payment_success` `payment_failure`                                                                         | Timeline row: dot, type, timestamp, reference, amount.                                                                                                                                                                     |
-| CodeBlock                         | title or language tabs, copy button                                                                                           | Always dark. Keep `CodePanel`'s copy logic.                                                                                                                                                                                |
-| Table                             |                                                                                                                               | Header 40px on `bg-subtle` with eyebrow text. Rows 56px. Amounts right-aligned, mono, `tabular`. Wrapped in a 12px-radius card.                                                                                            |
-| Modal                             | `default` `destructive`                                                                                                       | 480 to 560px wide, footer on `bg-subtle`, `shadow-3`, `bg-scrim` behind. Esc and scrim click close it; focus is trapped.                                                                                                   |
-| Alert                             | `info` `warning` `danger` `success` `accent`                                                                                  | Inline.                                                                                                                                                                                                                    |
-| Toast, Tooltip, EmptyState        |                                                                                                                               |                                                                                                                                                                                                                            |
-| Pagination                        |                                                                                                                               | **Prev / Next plus a rows-per-page select (10, 25, 50, 100). No page numbers and no totals.** The PNGs show page numbers; ignore that. Until a list endpoint returns cursors, render the list without pagination controls. |
-| SiteNav, DocsNav, SiteFooter      |                                                                                                                               | Marketing shell.                                                                                                                                                                                                           |
-| AppSidebar, AppTopbar             |                                                                                                                               | App shell, see below.                                                                                                                                                                                                      |
+| Component | Variants | Notes |
+|---|---|---|
+| Button | `primary` `secondary` `ghost` `accent` `danger` × `sm` (32px) `md` (40px) `lg` (48px) | Radius 6px for `sm`, 8px otherwise. Optional leading or trailing icon. Disabled is 40% opacity. `danger` only for destructive confirms. |
+| IconButton | `secondary` `ghost` `primary` × `sm` `md` | Square. Needs an `aria-label`. |
+| Badge | tone `success` `danger` `warning` `info` `neutral` `accent` × kind `soft` `dot` `outline` | Mono, lowercase. The label is the API enum value, unchanged. |
+| MethodBadge | `GET` `POST` `PATCH` `DELETE` | Docs only. |
+| TechChip, Kbd, Avatar | Avatar `sm` 24, `md` 32, `lg` 40 | Avatar shows initials. |
+| Input | `text` `select` `search` `password` × default, focus, error, disabled | 40px tall, radius 8px, label above, hint below. An error replaces the hint. Focus is an accent border plus `shadow-focus`. |
+| Textarea, Checkbox, Radio, Switch | | |
+| Tabs | `underline` (sections of a page, optional count), `segment` (chart range, modal toggles), `pill` (quick filters above a list) | |
+| Menu, MenuItem | default, hover, selected (check mark), destructive | 240px wide, 6px padding, 36px rows, `shadow-2`. Close on outside click with the existing ref-based pattern. |
+| StatCard | `default` `inverse` | At most one `inverse` card per row. |
+| LedgerEntry | `invoice_created` `payment_success` `payment_failure` | Timeline row: dot, type, timestamp, reference, amount. |
+| CodeBlock | title or language tabs, copy button | Always dark. Keep `CodePanel`'s copy logic. |
+| Table | | Header 40px on `bg-subtle` with eyebrow text. Rows 56px. Amounts right-aligned, mono, `tabular`. Wrapped in a 12px-radius card. |
+| Modal | `default` `destructive` | 480 to 560px wide, footer on `bg-subtle`, `shadow-3`, `bg-scrim` behind. Esc and scrim click close it; focus is trapped. |
+| Alert | `info` `warning` `danger` `success` `accent` | Inline. |
+| Toast, Tooltip, EmptyState | | |
+| Pagination | | **Prev / Next plus a rows-per-page select (10, 25, 50, 100). No page numbers and no totals.** The PNGs show page numbers; ignore that. Until a list endpoint returns cursors, render the list without pagination controls. |
+| SiteNav, DocsNav, SiteFooter | | Marketing shell. |
+| AppSidebar, AppTopbar | | App shell, see below. |
 
 ## Status colours
 
 Labels are the API's enum values. Map them like this:
 
-| Resource       | Value → tone                                                                                                    |
-| -------------- | --------------------------------------------------------------------------------------------------------------- |
-| Subscription   | `active` success · `paused` warning · `cancelled` danger · `expired` neutral                                    |
-| Invoice        | `draft` neutral · `issued` warning · `partially_paid` info · `paid` success · `overdue` danger · `void` neutral |
-| Payment        | `success` success · `failed` danger                                                                             |
-| Ledger entry   | `invoice_created` info · `payment_success` success · `payment_failure` danger                                   |
-| Plan, customer | `active` success · `inactive` neutral                                                                           |
-| Invoice type   | `subscription` neutral · `one_time` accent                                                                      |
+| Resource | Value → tone |
+|---|---|
+| Subscription | `active` success · `paused` warning · `cancelled` danger · `expired` neutral |
+| Invoice | `draft` neutral · `issued` warning · `partially_paid` info · `paid` success · `overdue` danger · `void` neutral |
+| Payment | `success` success · `failed` danger |
+| Ledger entry | `invoice_created` info · `payment_success` success · `payment_failure` danger |
+| Plan, customer | `active` success · `inactive` neutral |
+| Invoice type | `subscription` neutral · `one_time` accent |
 
 `overdue` and `draft` aren't in the PNGs; the mapping above covers them.
 
@@ -138,18 +138,18 @@ Follow the design's layout, keeping today's behaviour:
 
 ## Screens and routes
 
-| Route                                                | PNG                                                                             | Status                                                                                                                                                             |
-| ---------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `/`                                                  | `website/01-landing-light.png`, `02-landing-dark.png`, plus section slices      | Restyle                                                                                                                                                            |
-| `/docs`                                              | `website/03-docs-introduction.png` to `07-docs-list-invoices.png`               | Restyle. Static content. Splitting into several pages with the docs sidebar is fine.                                                                               |
-| `/contact`                                           | `website/10-contact.png`                                                        | New, static. There is no form backend: ask how the form should submit before building it.                                                                          |
-| `/login`, `/signup`                                  | `website/11-auth-log-in.png`, `12-auth-log-in-error.png`, `13-auth-sign-up.png` | Restyle. Keep the handlers.                                                                                                                                        |
-| not-found                                            | `website/15-404.png`                                                            | Restyle `ErrorState`.                                                                                                                                              |
-| `/dashboard` (project cards)                         | none                                                                            | Restyle with the new components. No PNG exists for this page.                                                                                                      |
-| `/dashboard/[projectId]/plans`                       | `dashboard-light/05-plans.png`, `06-plans-create-plan-modal.png`                | Restyle. Works today.                                                                                                                                              |
-| customers, subscriptions, invoices, payments, ledger | `dashboard-light/07` to `19`                                                    | Endpoints exist, but lists return IDs without names and have no counts. Build one screen at a time, **only when asked**, and report what the API is missing first. |
-| project overview                                     | `dashboard-light/01-overview.png`                                               | Needs analytics endpoints that don't exist. Leave the route as it is today.                                                                                        |
-| renewal cycle, API keys, settings                    | `dashboard-light/20` to `22`                                                    | No backend. Keep `ComingSoon`.                                                                                                                                     |
+| Route | PNG | Status |
+|---|---|---|
+| `/` | `website/01-landing-light.png`, `02-landing-dark.png`, plus section slices | Restyle |
+| `/docs` | `website/03-docs-introduction.png` to `07-docs-list-invoices.png` | Restyle. Static content. Splitting into several pages with the docs sidebar is fine. |
+| `/contact` | `website/10-contact.png` | New, static. There is no form backend: ask how the form should submit before building it. |
+| `/login`, `/signup` | `website/11-auth-log-in.png`, `12-auth-log-in-error.png`, `13-auth-sign-up.png` | Restyle. Keep the handlers. |
+| not-found | `website/15-404.png` | Restyle `ErrorState`. |
+| `/dashboard` (project cards) | none | Restyle with the new components. No PNG exists for this page. |
+| `/dashboard/[projectId]/plans` | `dashboard-light/05-plans.png`, `06-plans-create-plan-modal.png` | Restyle. Works today. |
+| customers, subscriptions, invoices, payments, ledger | `dashboard-light/07` to `19` | Endpoints exist, but lists return IDs without names and have no counts. Build one screen at a time, **only when asked**, and report what the API is missing first. |
+| project overview | `dashboard-light/01-overview.png` | Needs analytics endpoints that don't exist. Leave the route as it is today. |
+| renewal cycle, API keys, settings | `dashboard-light/20` to `22` | No backend. Keep `ComingSoon`. |
 
 Dark versions of every dashboard screen are in `design/dashboard-dark/` under the same file names.
 
