@@ -105,3 +105,46 @@ export type PlanFormState = {
     success: boolean;
     message: string;
 }
+
+export interface Customer {
+    id: string;
+    project_id: string;
+    name: string;
+    email: string;
+    company_name?: string;
+    status: "active" | "inactive";
+    created_at: string;
+    updated_at: string;
+    subscriptions: Subscription[];
+}
+
+export interface CustomerCreate {
+    name: string;
+    email: string;
+    company_name?: string;
+    status: "active" | "inactive";
+}
+
+export interface CustomerUpdate {
+    name?: string;
+    email?: string;
+    company_name?: string;
+    status?: "active" | "inactive";
+}
+
+export type FormState = {
+    success: boolean;
+    message: string;
+}
+
+export interface Subscription {
+    id: string;
+    project_id: string;
+    customer_id: string;
+    plan_id: string;
+    status: "active" | "paused" | "cancelled" | "expired";
+    start_date: string;
+    end_date: string;
+    created_at: string;
+    updated_at: string;
+}

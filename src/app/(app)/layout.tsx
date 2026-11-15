@@ -9,9 +9,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 	const account: AccountResponse = response.accounts?.[0];
 	const projects = await getProjects();
 	return (
-		<main className="h-screen">
+		<>
 			<Navbar type="app" user={user} account={account} projects={projects} />
 			{children}
-		</main>
+		</>
 	);
 }
